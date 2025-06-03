@@ -63,3 +63,59 @@ Opción 1: Control Center:
   *  simplemente conectarse desde código Java o Python
 
 
+## CONCEPTOS DE APACHE KAFKA
+
+### BROKER
+
+Máquina o nodo donde se ejecuta el servicio de Apache Kafka.
+
+### CLUSTER
+
+Para alta escalabilidad y disponibilidad es habitual tener más de un broker, lo cual conforma un clúster.
+
+### TOPICS
+
+Un topic es la estructura de datos que utiliza Apache Kafka y actúa como una tabla donde se almacena la información y se consume la información.
+
+Actúa como si fuera una tabla.
+
+Los topics internamente tienen a nivel de configuración:
+
+* particiones
+* réplicas
+* Tiempo de retención
+* Política de limpieza
+
+Hemos creado un topic llamado topic_1 desde control-center.
+
+### PRODUCERS
+
+Producer consiste en "producir" y enviar información a el broker para que la almacene en un topic.
+
+Se puede crear un Producer desde:
+
+* Código java o python
+* Desde una aplicación como control-center
+* Desde consola con un comando
+
+La información puede ser:
+
+* string
+* número
+* json
+* schema apache avro
+
+Vamos a probar a enviar datos desde control-center a un topic.
+
+A cada mensaje se le asocia:
+* value
+* key
+* timestamp
+* headers
+* partition
+* offset: indica la posición del mensaje, útil para que los consumidores sepan desde donde leer
+
+### CONSUMER
+
+Consumer o consumidor lee los mensajes que llegan a un topic.
+

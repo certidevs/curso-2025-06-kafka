@@ -1,0 +1,21 @@
+[
+  {
+    "topic": "topic_1",
+    "partition": 0,
+    "offset": 0,
+    "timestamp": 1748964580298,
+    "timestampType": "CREATE_TIME",
+    "headers": [],
+    "key": "18",
+    "value": {
+      "ordertime": 1497014222380,
+      "orderid": 18,
+      "itemid": "Item_184",
+      "address": {
+        "city": "Mountain View",
+        "state": "CA",
+        "zipcode": 94041
+      }
+    }
+  }
+]

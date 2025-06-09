@@ -46,6 +46,15 @@ Para conectar a Apache Kafka desde código ya sea Python o Java o Scala o cualqu
     * https://github.com/confluentinc/cp-all-in-one/blob/7.9.0-post/cp-all-in-one/docker-compose.yml
     * docker-compose up -d
 
+## INICIAR APACHE KAFKA
+
+docker ps
+
+docker-compose up -d
+
+docker-compose down
+
+docker stats
 
 ## Ver Apache Kafka
 
@@ -67,11 +76,15 @@ Opción 1: Control Center:
 
 ### BROKER
 
-Máquina o nodo donde se ejecuta el servicio de Apache Kafka.
+Máquina o nodo donde se ejecuta el servicio de Apache Kafka. Es el servidor que forma parte de un clúster de Kafka.
+
+Se encarga de recibir, almacenar y distribuir mensajes.
 
 ### CLUSTER
 
 Para alta escalabilidad y disponibilidad es habitual tener más de un broker, lo cual conforma un clúster.
+
+Conjunto de uno o varios brokers que trabajan juntos, para asegurar escalar la capacidad de envío y recepción de mensajes y alta disponibilidad.
 
 ### TOPICS
 
@@ -86,7 +99,7 @@ Los topics internamente tienen a nivel de configuración:
 * Tiempo de retención
 * Política de limpieza
 
-Hemos creado un topic llamado topic_1 desde control-center.
+Hemos creado un topic llamado topic_1 desde control-center en http://localhost:9021/clusters
 
 ### PRODUCERS
 
@@ -115,7 +128,23 @@ A cada mensaje se le asocia:
 * partition
 * offset: indica la posición del mensaje, útil para que los consumidores sepan desde donde leer
 
+Símil: es como insertar una fila en una tabla de MySQL.
+
+### RECORD O MENSAJE
+
+Es el mensaje que un Producer envía a un topic de Apache Kafka.
+
+Sería como una nueva fila en base de datos.
+
 ### CONSUMER
 
-Consumer o consumidor lee los mensajes que llegan a un topic.
+Consumer o consumidor lee los mensajes que llegan a un topic o varios topics.
+
+### OFFSET
+
+índice numérico que identifica la posición de un mensaje o record dentro de una partición dentro de un topic.
+
+Permite al consumer saber qué mensajes ya procesó y desde donde continuar leyendo en caso de reinicio.
+
+
 

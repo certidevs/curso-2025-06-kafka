@@ -147,4 +147,18 @@ Consumer o consumidor lee los mensajes que llegan a un topic o varios topics.
 Permite al consumer saber qué mensajes ya procesó y desde donde continuar leyendo en caso de reinicio.
 
 
+## APACHE KAFKA DESDE JAVA
+
+Hemos creado en Java:
+
+* ProducerTest: con el código mínimo necesario de Java para conectarse a Kafka y enviar un mensaje.
+
+* ConsumerTest: con el código mínimo necesario de Java para conectarse a Kafka y recibir mensajes de kafka.
+
+
+En Spring Boot:
+
+* API REST Hola mundo
+* Desde ese API REST poder enviar a Kafka mensajes
+* En esa misma API REST tener un Consumer que reciba mensajes
 

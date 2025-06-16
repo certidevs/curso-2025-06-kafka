@@ -155,10 +155,26 @@ Hemos creado en Java:
 
 * ConsumerTest: con el código mínimo necesario de Java para conectarse a Kafka y recibir mensajes de kafka.
 
+## APACHE KAFKA DESDE SPRING BOOT
 
-En Spring Boot:
+* docker-compose up -d
+* Control Center: http://localhost:9021
+* Iniciar aplicación Spring Boot ejecutando el main de la clase KafkaApplication
+* Aplicación Spring Boot: http://localhost:8080 
 
-* API REST Hola mundo
-* Desde ese API REST poder enviar a Kafka mensajes
-* En esa misma API REST tener un Consumer que reciba mensajes
+Crear un producer en Spring Boot para enviar mensajes a Apache Kafka:
 
+* Paso 1:
+  * Configurar producer en application.properties
+* Paso 2:
+  * Crear un controlador para poder invocarlo desde el navegador por HTTP
+* Paso 3:
+  * Inyectado KafkaTemplate en el controlador para poder enviar mensaje a Kafka
+
+
+Crear un consumer en Spring Boot para recibir mensajes de Apache Kafka.
+
+* Paso 1:
+  *  Configurar consumer en application.properties
+* Paso 2:
+  * Crear clase Consumer con método para consumir mensajes de Apache Kafka

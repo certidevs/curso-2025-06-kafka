@@ -5,6 +5,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.Mapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -26,14 +27,14 @@ public class HelloController {
     }
 
     // http://localhost:8080/enviar-mensaje
-    @GetMapping("enviar-mensaje")
-    public String enviarMensajeAKafka() {
-        producer.sendDefault("Hola desde Spring Boot");
-        return "Mensaje enviado";
+    @GetMapping("enviar-mensaje/{mensaje}")
+    public String enviarMensajeAKafka(@PathVariable String mensaje) {
+        producer.sendDefault(mensaje);
+        return "Mensaje enviado con éxito: " + mensaje;
     }
 
 
-
+    // PostMapping
 
     /*
     OK 1. Crear un controlador

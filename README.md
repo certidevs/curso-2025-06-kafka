@@ -157,6 +157,8 @@ Hemos creado en Java:
 
 ## APACHE KAFKA DESDE SPRING BOOT
 
+https://docs.spring.io/spring-kafka/reference/kafka.html
+
 * docker-compose up -d
 * Control Center: http://localhost:9021
 * Iniciar aplicación Spring Boot ejecutando el main de la clase KafkaApplication
@@ -178,3 +180,9 @@ Crear un consumer en Spring Boot para recibir mensajes de Apache Kafka.
   *  Configurar consumer en application.properties
 * Paso 2:
   * Crear clase Consumer con método para consumir mensajes de Apache Kafka
+* Paso 3:
+  * Enviar mensaje con el Producer y ver cómo el consumer lo recibe y lo imprime por consola
+
+Pendiente:
+
+* Enviar y recibir un objeto: Customer, Pedido, Transacción

@@ -35,4 +35,12 @@ public class Consumer {
             System.out.println("Error al procesar el producto: " + e.getMessage());
         }
     }
+
+    @KafkaListener(topics = "products2")
+    public void consumirProducto2(ConsumerRecord<String, Product> mensaje) {
+
+        Product product = mensaje.value();
+        System.out.println("Título del producto: " + product.title());
+        System.out.println("Precio del producto: " + product.price());
+    }
 }

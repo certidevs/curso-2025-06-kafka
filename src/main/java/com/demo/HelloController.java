@@ -60,15 +60,5 @@ public class HelloController {
         return product;
     }
 
-    // PostMapping
 
-    /*
-    OK 1. Crear un controlador
-    NO 2. Agregar un Servicio, otra clase de java que tenga la lógica de negocio
-    NO 3. Agregar un Repositorio, permite realizar consultas y guardados en base de datos
-    SI 4. Agregar un Producer de Kafka para enviar mensajes a kafka
-
-
-
-     */
 }

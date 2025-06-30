@@ -1,4 +1,4 @@
-package com.demo;
+package com.demo.ejemplo2;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,19 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
+/**
+ * Consumer para consumir objetos Product
+ *
+ * 2 opciones:
+ *
+ * - Lo recibe como texto String y lo convierte a objeto usando ObjectMapper
+ * - Lo recibe como objeto Product usando JsonDeserializer
+ */
 @Component
-public class Consumer {
+public class ProductConsumer {
 
     @Autowired
     private ObjectMapper objectMapper;
-
-    // Consumer para leer mensajes String hola mundo
-    // @KafkaListener(topics = "topic_spring", groupId = "group_spring")
-    @KafkaListener(topics = "topic_spring")
-    public void consumirMensaje(ConsumerRecord<String, String> mensaje) {
-        System.out.println("recibido mensaje de Kafka: " + mensaje.value());
-        // lógica de negocio
-    }
 
     @KafkaListener(topics = "products")
     public void consumirProducto(ConsumerRecord<String, String> mensaje) {

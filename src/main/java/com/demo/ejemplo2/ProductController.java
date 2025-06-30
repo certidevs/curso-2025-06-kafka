@@ -1,40 +1,36 @@
-package com.demo;
+package com.demo.ejemplo2;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controlador que recibe un objeto Product vía API REST y lo envía a Kafka
+ *
+ * 2 opciones:
+ *
+ * - Lo envía como texto usando ObjectMapper
+ * - Lo envía como objeto usando JsonSerializer
+ */
 @RestController
-public class HelloController {
+public class ProductController {
 
-    @Autowired
-    private KafkaTemplate<String, String> producer;
     @Autowired
     private ObjectMapper objectMapper;
     @Autowired
+    private KafkaTemplate<String, String> producer;
+    @Autowired
     private KafkaTemplate<String, Product> productProducer;
-
-
-    // http://localhost:8080
-    @GetMapping
-    public String hola() {
-        return "Hola";
-    }
 
     // http://localhost:8080/producto
     @GetMapping("producto")
     public Product obtenerProduct() {
         return new Product("Silla Steelcase", 499.0);
-    }
-
-    // http://localhost:8080/enviar-mensaje
-    @GetMapping("enviar-mensaje/{mensaje}")
-    public String enviarMensajeAKafka(@PathVariable String mensaje) {
-        producer.sendDefault(mensaje);
-        return "Mensaje enviado con éxito: " + mensaje;
     }
 
     // POST http://localhost:8080/enviar-producto
@@ -59,6 +55,4 @@ public class HelloController {
         productProducer.send("products2", product);
         return product;
     }
-
-
 }

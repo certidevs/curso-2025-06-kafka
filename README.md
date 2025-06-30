@@ -200,8 +200,15 @@ http://localhost:8080/swagger-ui/index.html
 
 Enviar un String con un solo valor es poco práctico, habitualmente se suele enviar un objeto entero.
 
-### OPCIÓN 1:
+### OPCIÓN 1: (DONE)
 
 Enviar String con un json, y convertir de String a objeto java y viceversa con Jackson.
 
-Para ello se puede usar ObjectMapper.
+Para ello se puede usar ObjectMapper:
+
+* writeValueAsString
+* readValue
+
+### OPCIÓN 2: 
+
+* En application.properties cambiar Serializadores y Deserializadores por JSON 

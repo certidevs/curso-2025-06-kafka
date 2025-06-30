@@ -14,6 +14,8 @@ public class HelloController {
     private KafkaTemplate<String, String> producer;
     @Autowired
     private ObjectMapper objectMapper;
+    @Autowired
+    private KafkaTemplate<String, Product> productProducer;
 
 
     // http://localhost:8080
@@ -52,6 +54,11 @@ public class HelloController {
         return product;
     }
 
+    @PostMapping("enviar-producto2")
+    public Product enviarProductoAKafka2(@RequestBody Product product) {
+        productProducer.send("products2", product);
+        return product;
+    }
 
     // PostMapping
 

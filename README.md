@@ -186,3 +186,22 @@ Crear un consumer en Spring Boot para recibir mensajes de Apache Kafka.
 Pendiente:
 
 * Enviar y recibir un objeto: Customer, Pedido, Transacción
+
+
+## OPEN API SWAGGER
+
+Agregada dependencia springdoc-openapi-starter-webmvc-ui en el pom.xml y recargar maven.
+
+Ejecutar la aplicación de spring boot.
+
+http://localhost:8080/swagger-ui/index.html
+
+## ENVIAR JSON A KAFKA
+
+Enviar un String con un solo valor es poco práctico, habitualmente se suele enviar un objeto entero.
+
+### OPCIÓN 1:
+
+Enviar String con un json, y convertir de String a objeto java y viceversa con Jackson.
+
+Para ello se puede usar ObjectMapper.

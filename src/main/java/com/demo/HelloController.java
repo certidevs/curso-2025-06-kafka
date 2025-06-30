@@ -1,18 +1,20 @@
 package com.demo;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloController {
 
     @Autowired
     private KafkaTemplate<String, String> producer;
+    @Autowired
+    private ObjectMapper objectMapper;
+
 
     // http://localhost:8080
     @GetMapping
@@ -31,6 +33,23 @@ public class HelloController {
     public String enviarMensajeAKafka(@PathVariable String mensaje) {
         producer.sendDefault(mensaje);
         return "Mensaje enviado con éxito: " + mensaje;
+    }
+
+    // POST http://localhost:8080/enviar-producto
+    @PostMapping("enviar-producto")
+    public Product enviarProductoAKafka(@RequestBody Product product) {
+        // enviar a kafka un objeto producto
+        System.out.println(product);
+        // producer.sendDefault(product);
+
+        try {
+            String productJSON = objectMapper.writeValueAsString(product);
+            producer.send("products", productJSON);
+        } catch (JsonProcessingException e) {
+            System.out.println("Error al enviar el producto: " + e.getMessage());
+        }
+
+        return product;
     }
 
 
